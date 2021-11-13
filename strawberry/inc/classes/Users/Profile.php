@@ -16,11 +16,11 @@ use classes\{
 final class Profile extends CuteParser
 {
 	private $action
-		, $header
-		, $errors = []
-		, $values = []
-		, $upload = false
-		, $module = 'editprofile'
+	, $header
+	, $errors = []
+	, $values = []
+	, $upload = false
+	, $module = 'editprofile'
 	;
 	
 	public $member = [];
@@ -28,9 +28,8 @@ final class Profile extends CuteParser
 	public function __construct ($config)
 	{
 		parent::__construct($config);
-
 		$this->action = $_POST['action'] ?? null;
-        $this->header = $_SERVER['HTTP_X_REQUESTED_WITH'];
+        	$this->header = $_SERVER['HTTP_X_REQUESTED_WITH'];
 	}
 
 	public function __set($member, $value)  
@@ -41,7 +40,8 @@ final class Profile extends CuteParser
 	private function form( $dir = templates_directory . '/Users/' )
 	{
 		$template = (new Template($dir))->open('editprofile', $this->module);
-		$template->set('username', $this->member['username'], $this->module)
+		$template
+			->set('username', $this->member['username'], $this->module)
 			->set('age', date_AddRows($this->member['age']), $this->module)
 			->set('name', $this->member['name'], $this->module)
 			->set('mail', $this->member['mail'], $this->module)
@@ -55,9 +55,9 @@ final class Profile extends CuteParser
 			$contact = json_decode($this->member['contacts']);
 
 			$template->set('city',  $contact->city,  $this->module)
-					 ->set('page',  $contact->page,  $this->module)
-					 ->set('skype', $contact->skype, $this->module)
-					 ->set('phone', $contact->phone, $this->module)
+				 ->set('page',  $contact->page,  $this->module)
+				 ->set('skype', $contact->skype, $this->module)
+				 ->set('phone', $contact->phone, $this->module)
 			;
 		}
 	
@@ -68,13 +68,13 @@ final class Profile extends CuteParser
 	private function edit($result = '')
 	{
 		if ( !isset($this->action) or $this->action !== $this->module or !$this->isXmlHttpRequest() )
-        {
-            cute_response_code( 500, 0 );
+		{
+		    cute_response_code( 500, 0 );
 		}
 
 		foreach ($_POST as $k => $v)
-        {
-            $$k = $v;
+		{
+		    $$k = $v;
 		}
 		
 		if ( !filter_var($mail, FILTER_VALIDATE_EMAIL) )
@@ -164,11 +164,11 @@ final class Profile extends CuteParser
 		$this->values['lj_password'] = replace_comment('add', $ljpassword, true);
 		
 		try {
-			
 			$result = $this->update(['users', 'where' => $this->member['id'], 'values' => $this->values])
 			? t('Ваш профиль успешно отредактирован!') : t('Ошибка запроса!');
 			$this->values = [];
 			cute_response_code( 200, $result );
+			
 		} catch (\Exception $e) {
 			cute_response_code( 500, $e->getMessage() );
 		}
