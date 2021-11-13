@@ -23,9 +23,9 @@ if (reset($errors)) {
 	exit ( join('<br/>', array_values($errors)) ) ;
 }
 
-$vote = (int) $post['votes'];
+$vote = (int) $post['rating'];
 
-if (!$sql->count(['votes', 'where' => ["ip = $ip", 'and', "id = $id"]]))
+if (!$sql->count(['rating', 'where' => ["ip = $ip", 'and', "id = $id"]]))
 {	
 	$vote = ($vote + 1);
 	$values['id'] = $id;
@@ -36,11 +36,11 @@ if (!$sql->count(['votes', 'where' => ["ip = $ip", 'and', "id = $id"]]))
 		$values['user_id'] = $member['id'];
 	}
 
-	$sql->insert(['votes', 'values' => $values]);
+	$sql->insert(['rating', 'values' => $values]);
 
 } else {
 	$vote = ($vote - 1);
-    $sql->delete(['votes', 'where' => ["ip = $ip", 'and', "id = $id"]]);
+    	$sql->delete(['rating', 'where' => ['ip = ' . $member['id'], 'and', 'id = ' .$id]]);
 }
 
 $sql->update(['news', 'where' => $id, 'values' => [ 'votes' => $vote ]]);
