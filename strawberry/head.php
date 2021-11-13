@@ -128,15 +128,15 @@ if (isset($username))
 	if ($sql->login($username, $password))
 	{
 		cute_setcookie('lastname', $username, (time + 1012324305), '/');
-        cute_setcookie('username', $username, (time + 3600 * 24), '/'); // * 365
+		cute_setcookie('username', $username, (time + 3600 * 24), '/'); // * 365
 		cute_setcookie('password', $password, (time + 3600 * 24), '/'); // * 365
 		$is_logged_in = true;
 
 	} else {
 		$result = '<font color="red">'.t('Неправильное имя пользователя или пароль!').'</font>';
-        $is_logged_in = false;
-        cute_setcookie('username', '', (time - 3600 * 24), '/');
-        cute_setcookie('password', '', (time - 3600 * 24), '/');
+		$is_logged_in = false;
+		cute_setcookie('username', '', (time - 3600 * 24), '/');
+		cute_setcookie('password', '', (time - 3600 * 24), '/');
 	}
 }
 
