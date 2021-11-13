@@ -1,0 +1,35 @@
+@media (max-width: 1024px) {
+
+    #navbar .nav > li
+    {
+	}
+	
+    #navbar .nav > li a
+    {
+        font-size: 1em;
+    }
+	
+    header h1
+    {
+        padding: 0 13px; letter-spacing:0
+    }
+		
+    header a h1
+    {
+
+    }
+    
+
+    #content {
+		padding-left: 15px;
+		padding-right: 15px
+	}
+		 
+    main 
+    {
+        *padding: 10px 15px 0;
+    } 
+	footer ul {
+	   width:100%; padding-left:15px;
+	}
+}

@@ -1,0 +1,50 @@
+<?php
+
+$offset = isset($offset) ? (int) $offset : 0;
+$number = isset($number) ? (int) $number : 5;
+$select = '`date`, `author`, `title`, `id`, `image`, `category`, `url`, `type`';
+
+$query = "
+	SELECT 
+		`date`,
+		`author`,
+		`title`,
+		`id`,
+		`image`,
+		`category`,
+		`url`,
+		`type`
+	FROM `" .PREFIX. "news`  
+		WHERE `type` = 'blog'
+			ORDER BY `date` DESC 
+				LIMIT $offset, $number
+	";
+
+if (!$query = $sql->query($query)){
+    return $cute->msg('Ошибка', t('У вас нет выбранных постов!'));
+}
+
+$body = <<<BODY
+<ul>
+{{ BEGIN row }}
+    <li>
+        <a href="{{ showLink(row) }}">
+            {{ title }} <i>{{ showDate(date, 'd M Y H:i:s') }}</i>
+        </a>
+    </li>
+{{ END row }}
+</ul>
+BODY;
+
+
+
+//$T->block('/row', array('name' => $i_name), TRUE);
+foreach ($query as $k => $row) 
+{
+	$tpl['row'][$k] = $row;
+}
+
+
+return (new classes\Blitz)
+	->load($body)
+	->display($tpl);

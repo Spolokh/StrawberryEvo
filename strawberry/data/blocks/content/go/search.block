@@ -1,0 +1,12 @@
+<?php
+// show search (add-on)
+
+$number = 7;
+include rootpath.'/show_search.php';
+?>
+
+
+
+
+
+

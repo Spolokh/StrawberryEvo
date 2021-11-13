@@ -1,0 +1,39 @@
+<?php
+
+$Profile = '';
+
+if (!($member || $is_logged_in))
+{   
+   return $cute->msg( 'Achtung!',  t('Необходима авторизация на сайте') );
+}
+
+use classes\Users\Profile;
+$Profile = new Profile($config);
+$Profile->member = $member;
+$Profile->run();
+
+class Test
+{
+    private $config = [];
+	public $member = [];
+	
+	public function __construct(array $config = [])
+	{
+		$this->config = $config;
+	}
+
+	public function __get($member)  
+    {
+        $this->member = $member;
+    }
+	
+	public function run($k = 'mail')
+	{
+		print $this->member[$k] ;
+	}
+}
+/*
+$Test = new Test;
+$Test->member = $member;
+$Test->run();
+*/

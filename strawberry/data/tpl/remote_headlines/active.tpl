@@ -1,0 +1,1 @@
+document.write("<li><a href='<?=$tpl['post']['link']['post']; ?>'><?=htmlspecialchars($tpl['post']['title'], ENT_QUOTES); ?></a></li>");

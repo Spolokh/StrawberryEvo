@@ -1,0 +1,18 @@
+<nav>
+    <ul class="nav">
+		<li><a id="main" href="/">Главная</a></li>
+		<li><a id="blog"  href="<?=cute_get_link(['go' => 'blog'], 'go')?>">Блоги</a></li>
+		<li><a id="video" href="<?=cute_get_link(['go' => 'video'],'go')?>">Видео</a></li>
+		<li><a id="users" href="<?=cute_get_link(['go' => 'users'],'go')?>">Люди</a></li>
+		<li><a id="mail" href="<?=cute_get_link(['go' => 'mail'], 'go')?>">Контакты</a></li>
+        <li><a id="keywords" href="<?=cute_get_link(['go' => 'keywords'], 'go')?>">Теги</a> 
+	      	<?php if( function_exists('cn_keywords') ) : ?>
+			<ul><?=cn_keywords()?></ul>
+			<?php endif; ?>
+       </li>
+    </ul>
+	 
+    <ul class="nav right"> 
+		<?=function_exists('userpanel')? userpanel(): '';?>
+	</ul>
+</nav>

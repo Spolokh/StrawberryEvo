@@ -1,0 +1,8 @@
+# запрещает показ списка файлов
+Options -Indexes
+# разрешаем доступ к login.php
+<Files ~ "(do.php|rss.php|cron.php|login.php|profile.php|show_search.php|show_news.php)$">
+    #Allow from all
+</Files>
+# запрещаем доступ ко всему отовсюду
+Deny from all

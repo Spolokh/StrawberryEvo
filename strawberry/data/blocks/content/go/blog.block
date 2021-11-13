@@ -1,0 +1,19 @@
+<?php
+//Вывод блогов
+
+$type = 'blog';
+$template = 'Blog';
+include rootpath . '/show_news.php';
+
+if ( isset($post['id']) )
+{
+	$where = ['hidden = 0', 'and', "id <> $post[id]", 'and', "type = $post[type]"];
+	echo $cute->showHeadlines('<li><a href="{link}">{title}</a></li>', $where);
+	
+	/*$static['type']		= $post['type']; 
+	$static['number']  	= $config['news_number'];
+	$static['template'] = 'Headlines';
+	$static['hide_open_post'] = true;
+	include rootpath. '/show_news.php';
+	//echo preg_replace('/_|-|\s|\(|\)|\+/', '', $config['site_phone']);*/
+}

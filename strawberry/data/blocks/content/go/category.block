@@ -1,0 +1,42 @@
+<style>
+#tree > ul {
+  	width:100%;	/* Ширина меню */
+  	font-size:1em;	/* Размер названий в пункте меню */
+}
+#tree > ul li {
+  position: relative /* Подпункты позиционируются относительно */
+}
+#tree li > ul {
+  	padding-left:10px;
+  /*position: absolute;	*/	/* Подменю позиционируются абсолютно */
+	display: none;	/* Скрываем подменю */
+  /*top: 1px;*/			/* По высоте положение подменю исходное */
+  /*left: 179px;	*/		/* Сдвигаем подменю вправо */
+  /*z-index: 1	*/		/* Основное меню находится ниже подменю */
+}
+
+#tree ul > li > a {
+	margin-top: -1px;
+	width: 100%;			/* Ссылка на всю ширину пункта */
+	padding: 8px;			/* Поля вокруг надписи */
+	color: #3b78b9;
+	display: block;		/* Ссылка как блочный элемент */
+	text-decoration: none;	/* Подчеркивание у ссылок убираем */
+	border: 1px solid #CCC; /*#ccc;*/	/* Рамка вокруг пунктов меню */
+	background: #f9f9f9;
+}
+#tree li ul li a {
+  	z-index: 2; 
+	background: white
+}
+#tree li a:hover {
+	background: #f0f0f0
+}
+#tree li:hover ul, li.over ul { 
+	display: block
+}
+</style>
+
+<nav id="tree">
+	<?=new classes\Tree($categories)?>
+</nav>

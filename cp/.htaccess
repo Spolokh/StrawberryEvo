@@ -1,0 +1,21 @@
+DirectoryIndex index.php
+
+<IfModule mod_php5.c>
+php_flag register_globals off
+php_flag magic_quotes_gpc off
+php_flag magic_quotes_runtime off
+php_flag magic_quotes_sybase off
+</IfModule>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^(main|edit|post)(/?)+$ index.php?mod=$1 [QSA,L]
+</IfModule>
+
+<Files ~ "(show_search.php|show_news.php)$"> 
+  #deny from all 
+  RewriteCond %{HTTP_HOST} ^test\.ru
+</Files> 
+
+#php_value upload_max_filesize 50M
+#php_value post_max_size 50M
