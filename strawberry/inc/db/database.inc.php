@@ -8,7 +8,7 @@ $database = [
 		'username'     => ['type' => 'string', 'permanent' => 1],
 		'password'     => ['type' => 'string'],
 		'name'         => ['type' => 'string'],
-		'age'    	   => ['type' => 'int', 'default' => '0'],
+		'age'    => ['type' => 'int', 'default' => '0'],
 		'mail'         => ['type' => 'string', 'permanent' => 1],
 		'publications' => ['type' => 'int', 'default' => '0'],
 		'avatar'       => ['type' => 'string'],
@@ -50,7 +50,7 @@ $database = [
 	'hidden'      => ['type' => 'bool','default' => '0']
 ],
 
-'comments' => array( // comments
+'comments' => array( 
 
 	'date'    => array('type' => 'int'),
 	'author'  => array('type' => 'string'),
@@ -59,7 +59,7 @@ $database = [
 	'ip'      => array('type' => 'string'),
 	'comment' => array('type' => 'text'),
 	'reply'   => array('type' => 'text'),
-	'type'    => array('type' => 'string', 'default' => 'post'),
+	'type'    => array('type' => 'string'),
 	'post_id' => array('type' => 'string'),
 	'user_id' => array('type' => 'int', 'default' => '0'),
 	'parent'  => array('type' => 'int', 'default' => '0'),
@@ -91,7 +91,7 @@ $database = [
 	'tags'     => array('type' => 'string'),
 	'parent'   => array('type' => 'int', 'default' => '0'),
 	'level'    => array('type' => 'int', 'default' => '0'),
-	'type'     => array('type' => 'string', 'default' => 'post'),
+	'type'     => array('type' => 'string'),
 	'hidden'   => array('type' => 'bool', 'default' => '0'),
 	'password' => array('type' => 'string'),
 	'rating'   => array('type' => 'int', 'default' => '0'),
@@ -116,38 +116,6 @@ $database = [
 	'ext'    => array('type' => 'string'),
   ),
 
-
-	'links' => array( //links
-	'id' => array(
-			'type'           => 'int',
-			'auto_increment' => 1,
-			'primary'        => 1
-		),
-	'date'        => array('type' => 'int'),
-	'name'        => array('type' => 'string'),
-	'url'         => array('type' => 'string'),
-	'feed'        => array('type' => 'string'),
-	'banner'      => array('type' => 'string'),
-	'mail'        => array('type' => 'string'),
-	'catalog'     => array('type' => 'string'),
-	'description' => array('type' => 'text'),
-	'hidden'      => array('type' => 'bool', 'default' => '0'),
-	'views'       => array('type' => 'int', 'default' => '0'),
-	),
- 
-	'catalogs' => array( //catalogs
-		'id'          => array('type' => 'int', 'primary' => 1),
-		'name'        => array('type' => 'string'),
-		'url'    	  => array('type' => 'string'),
-		'icon'    	  => array('type' => 'string'),
-		'description' => array('type' => 'text'),
-		'parent'      => array('type' => 'int', 'default' => '0'),
-		'level'       => array('type' => 'int', 'default' => '0'),
-		'usergroups'  => array('type' => 'string'),
-		'publication' => array('type' => 'bool'),
-		'hidden'   => array('type' => 'bool', 'default' => '0')
-	),
-
 	'ipban' => array( // ipban
 		'ip'    => array('type' => 'string'),
 		'count' => array('type' => 'int', 'default' => '0')
@@ -160,7 +128,7 @@ $database = [
 	),
 
 	'story' => array( // story
-		'id' 		  => array('type' => 'int', 'primary' => 1),
+		'id' => array('type' => 'int', 'primary' => 1),
 		'description' => array('type' => 'string'),
 		'keywords' => array('type' => 'string'),
 		'short'   => array('type' => 'text'),
@@ -172,7 +140,7 @@ $database = [
 			'type'           => 'int',
 			'primary'        => 1,
 			'auto_increment' => 1,
-			),
+		),
 		'name'        => array('type' => 'string'),
 		'access'      => array('type' => 'text'),
 		'permissions' => array('type' => 'text')
@@ -183,12 +151,11 @@ $database = [
 		'name' => ['type' => 'string'],
 		'text' => ['type' => 'text']
 	],
-
-		
+	
 	'rating' => [ // ipban
-		'ip' 		=> ['type' => 'string'],
-		'type' 		=> ['type' => 'string', 'default' => 'post'],
-		'user_id' 	=> ['type' => 'int', 'default' => '0'],
-		'id'      	=> ['type' => 'int', 'default' => '0', 'permanent' => 1]
+		'ip' 	=> ['type' => 'string'],
+		'type' 	=> ['type' => 'string'],
+		'user' 	=> ['type' => 'int', 'default' => '0'],
+		'id'    => ['type' => 'int', 'default' => '0', 'permanent' => 1]
 	]
 ];
