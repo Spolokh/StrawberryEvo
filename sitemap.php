@@ -26,9 +26,8 @@ $url ->appendChild($loc);
 $url ->appendChild($mod);
 $url ->appendChild($pri);
 
-$query = $sql->select(
-	[ 'news', 'select' => ['id', 'url', 'date', 'author', 'title', 'type'],  'where' => ['hidden = 0'] ]
-);
+$query = [ 'news', 'select' => ['id', 'url', 'date', 'author', 'title', 'type'],  'where' => ['hidden = 0'] ];
+$query = $sql->select($query);
 
 if ( !reset($query) )
 {
